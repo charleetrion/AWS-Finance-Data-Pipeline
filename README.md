@@ -1,43 +1,44 @@
 # AWS Finance Data Pipeline
 
-Este proyecto implementa un **pipeline** de procesamiento de datos financieros en la nube utilizando los servicios de **AWS**. El pipeline descarga, procesa y guarda datos financieros históricos de diversas fuentes como **Yahoo Finance** y **Alpha Vantage**, calculando métricas clave como el retorno diario y la volatilidad. Los datos procesados se almacenan en un **bucket de Amazon S3**, lo que facilita el análisis posterior y la integración con otras aplicaciones.
+This project implements a financial data processing pipeline in the cloud using AWS services. The pipeline downloads, processes, and saves historical financial data from various sources such as Yahoo Finance and Alpha Vantage, calculating key metrics such as daily returns and volatility. The processed data is stored in an Amazon S3 bucket, facilitating subsequent analysis and integration with other applications.
 
-El propósito de este proyecto es ofrecer una solución escalable, eficiente y automatizada para gestionar datos financieros utilizando la infraestructura de **AWS**.
+The purpose of this project is to offer a scalable, efficient, and automated solution for managing financial data using the AWS infrastructure.
 
-## Descripción
+## Description
 
-Este pipeline permite gestionar datos financieros de forma automatizada y eficiente, cubriendo las siguientes etapas:
+This pipeline allows for automated and efficient financial data management, covering the following stages:
 
- ### 1. **Obtención de Datos Financieros**
-   - Los datos históricos de activos financieros se descargan de dos fuentes principales:
-     - **Yahoo Finance** a través de la librería `yfinance`. Esta API proporciona datos históricos de acciones, fondos y otros activos financieros en tiempo real.
-     - **Alpha Vantage**, utilizando una API gratuita que ofrece datos detallados sobre mercados de acciones, forex y criptomonedas.
+### 1. **Financial Data Collection**
+- Historical data on financial assets is downloaded from two main sources:
+- **Yahoo Finance** via the `yfinance` library. This API provides real-time historical data on stocks, funds, and other financial assets.
+- **Alpha Vantage**, using a free API that offers detailed data on stock, forex, and cryptocurrency markets.
 
- ### 2. **Procesamiento de los Datos**
-   - Una vez descargados los datos, se procesan para calcular **métricas financieras clave**:
-     - **Retorno Diario**: Calcula el cambio porcentual diario del precio de la acción.
-     - **Volatilidad**: Mide la variabilidad de los precios de la acción a lo largo del tiempo.
-   - Estos cálculos se realizan sobre las columnas de precios de cierre o precios ajustados de las acciones.
-  
- ### 3. **Almacenamiento en S3**
-   - Los datos procesados (incluidos los retornos y la volatilidad calculados) se almacenan en un archivo CSV.
-   - Este archivo CSV se sube de manera automatizada a un bucket de **Amazon S3**, proporcionando un lugar seguro, duradero y accesible desde cualquier lugar para su análisis posterior.
+### 2. **Data Processing**
+- Once the data is downloaded, it is processed to calculate **key financial metrics**:
+- **Daily Return**: Calculates the daily percentage change in the stock price.
+- **Volatility**: Measures the variability of stock prices over time.
+- These calculations are performed on the closing price or adjusted stock price columns.
 
- ### 4. **Escalabilidad y Automatización**
-   - Este pipeline está diseñado para escalar fácilmente con más tickers de acciones o períodos de tiempo más largos.
-   - El uso de servicios como **Amazon S3** y la automatización del proceso lo hacen adecuado para análisis en tiempo real, informes periódicos o integraciones con otros sistemas.
-     
-### Requisitos
+### 3. **S3 Storage**
+- The processed data (including calculated returns and volatility) is stored in a CSV file.
+- This CSV file is automatically uploaded to an **Amazon S3** bucket, providing a secure, durable, and accessible place for further analysis.
 
-Para ejecutar este proyecto, debes tener configurado lo siguiente:
+### 4. **Scalability and Automation**
+- This pipeline is designed to easily scale with more stock tickers or longer time periods.
+- The use of services like **Amazon S3** and the automation of the process make it suitable for real-time analysis, periodic reporting, or integrations with other systems.
 
-- **Python 3.x**: El proyecto está desarrollado en Python 3.x, por lo que necesitas tener esta versión instalada en tu entorno.
-- **Paquetes de Python**: El proyecto utiliza varias bibliotecas, que puedes instalar utilizando `pip`:
-  - `yfinance`: Para descargar datos históricos de Yahoo Finance.
-  - `pandas`: Para la manipulación de datos y el análisis financiero.
-  - `boto3`: Para interactuar con los servicios de AWS (S3).
-  - `requests`: Para realizar peticiones HTTP a la API de Alpha Vantage.
+### Requirements
 
-####  Instala las Dependencias
-Instala las dependencias necesarias:
+To run this project, you must have the following configured:
+
+- **Python 3.x**: The project is developed in Python 3.x, so you must have this version installed in your environment.
+
+- **Python Packages**: The project uses several libraries, which you can install using `pip`:
+- `yfinance`: For downloading historical data from Yahoo Finance.
+- `pandas`: For data manipulation and financial analysis.
+- `boto3`: For interacting with AWS (S3) services.
+- `requests`: For making HTTP requests to the Alpha Vantage API.
+
+#### Install Dependencies
+Install the required dependencies:
 - pip install -r requirements.txt
